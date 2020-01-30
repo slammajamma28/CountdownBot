@@ -9,5 +9,11 @@ soup = BeautifulSoup(data, 'html.parser')
 
 # Get the list of all available themes
 type_objs = soup.find(id="cd-templates")
+theme_list = [];
 for link in soup.find_all('article'):
-    print(link.get('data-theme'))
+	theme_list.append(link.get('data-theme'))
+
+for theme in theme_list:
+	if not theme == None:
+		print(theme)
+
