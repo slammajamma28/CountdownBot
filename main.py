@@ -14,4 +14,4 @@ async def on_message(message):
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
 
-client.run('MzUzMzM0Mjc2NjcyMDYxNDQz.XjM7TA.ixM5VzT3xNgWnerSfVotYXpPFic')
+client.run('discord.token')
