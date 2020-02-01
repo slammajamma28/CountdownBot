@@ -28,16 +28,19 @@ async def on_message(message):
 
     if message.content.startswith('$create'):
         channel = message.channel
+        creator = message.author
         await message.channel.send('Event name?')
         def check(m):
             return m.channel == channel
 
         try:
-            event_name = await client.wait_for('message', timeout=10.0, check=check)
+            resp = await client.wait_for('message', timeout=10.0, check=check)
         except asyncio.TimeoutError:
             await message.channel.send('Oooh a pretty butterfly! [timeout for input]')
         else:
-            await message.channel.send('Event name is: {.content}'.format(event_name))
+            event_name=resp.content
+            await message.channel.send('{}\'s event is: {}'.format(creator, event_name))
+            
 
 
 # Need a local file called token.properties
